@@ -25,7 +25,6 @@ class Cliente extends Controller
         $clientes = ClienteModel::listar();
         return view("Cliente.index", compact("clientes"));
     }
-
     public function destroy($id) {
         $status = ClienteModel::deletar($id);
         if ($status) {
@@ -33,13 +32,11 @@ class Cliente extends Controller
         } else {
             return redirect('listarCliente')->with("mensagem", "Cliente não encontrado...");
         }
-    }
-    
+    } 
     public function edit($id){
         $cliente = ClienteModel::consultar($id);
         return view("Cliente.edit",compact("cliente"));
     }
-
     public function update(Request $request, $id) {
         $cliente = ClienteModel::atualizar($id, $request); 
         if($cliente){
